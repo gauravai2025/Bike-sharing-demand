@@ -5,69 +5,53 @@
 
 ***1. Introduction***
 
-**1.1 Motivation**
+**2. Motivation**
 
-**1.2 Objective**
+**3. Objective**
 
-**1.3 Data Sources**
+**4. Data Sources**
 
-***2. Explanatory Data Analysis***
+***5. Explanatory Data Analysis***
 
-**2.1 Outlier Analysis:**
+**6.Outlier Analysis:**
 
-**2.2 Correlation Analysis**
+** 7. Correlation Analysis**
 
-***3. Methodology***
+*** 8. Methodology***
 
-**3.1 Data Processing Pipeline**
+** 9.Data Processing Pipeline**
 
-**3.2 Data Preprocessing using MapReduce**
+** 10. Data Preprocessing using MapReduce**
 
-*3.2.1 Reducer Phase*
+*11.Reducer Phase*
 
-*3.2.2 Mapping Phase*
+*12. Mapping Phase*
 
-**3.4 Further Data Processing with Spark**
+**13 Further Data Processing with Spark**
 
-*3.4.1 Defining the schema*
+*14.Defining the schema*
 
-*3.4.2 Reading data from HDFS*
+*15.Reading data from HDFS*
 
-*3.4.3 Data preprocessing*
+*16. Data preprocessing*
 
-*3.4.3 Saving preprocessed data into Hive tables*
+*17. Saving preprocessed data into Hive tables*
 
-**3.5 Machine Learning Models**
+**18. Machine Learning Models**
 
-*3.5.1 Linear Regression*
+* Random Forest*
 
-*3.5.2 Random Forest*
+***19 Discussion***
 
-*3.5.3 Gradient Boost*
+**20 Result Analysis**
 
-*3.5.4 MultiLayer Perceptron*
+**21 Future Work**
 
-***4. Discussion***
+*22 Model capability for dynamic data analysis*
 
-**4.1 Result Analysis**
+*23 Performance Optimization*
 
-**4.2 Future Work**
-
-*4.2.1 Model capability for dynamic data analysis*
-
-*4.2.2 Performance Optimization*
-
-***5. Conclusion***
-
-***6. Reference***
-
-***7. Individual Contribution***
-
-**7. 1 Individual Contribution Table**
-
-**7.2 Individual Contribution Statement**
-***8. Presentation***
- 
+***24Conclusion***
 
 ### 1.1 Motivation
 
