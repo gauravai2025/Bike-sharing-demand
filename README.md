@@ -1,40 +1,6 @@
-<div align="center">
-  <img src="./ReadMEImg/cityu_logo.jpeg">
-</div>
- 
-
-**City University of Hong Kong** 
-
-**CS4480 Data Intensive Computing** 
-
-**Group 14** 
 
 ## Parallel Computing System for Machine Learning Analysis  on Bike Sharing Demand Dataset
 
- 
-
-Student IDs : 56642728;56641664; 56644501 
-
-Student Names : LUO Peiyuan; LI Yiheng; ZHOU Xin 
-
-Student Emails : peiyualuo2-c@my.cityu.edu.hk; yihengli5-c@my.cityu.edu.hk; xzhou86-c@my.cityu.edu.hk 
-
- 
-
-### List of Deliverables
-
-
-
-|  |  |
-| --- | --- |
-| **File/Folder Name**  | **Description**  |
-| CS4480 Project Report.pdf  | Main Project Report  |
-| Code  | Project Code  |
-| CS4480 Presentation.pdf  | Presentation Slide  |
-
- 
-
- 
 ### Table of Contents
 
 ***1. Introduction***
@@ -213,36 +179,6 @@ We implemented a mapper class in the context of a bike test scenario. We extende
 
 We overridden the “map” method to define the logic for the mapping operation. We split the input value into fields using a comma as the delimiter. Then we performed data preprocessing. We handled missing values and outliers. Only if the fields meet certain conditions, the method emits a key-value pair with the bike ID as the key and `1` as the value using the `context. write` method. 
 
-```scala
-import org.apache.hadoop.io.{IntWritable, Text}
-import org.apache.hadoop.mapreduce.Mapper
-
-/**
- * @author Harry
- * @since 2023/11/17 22:33
- */
-class BikeTestMapper extends Mapper[Text, Text, Text, IntWritable] {
-  private val one = new IntWritable(1)
-
-  override
-  def map(key: Text, value: Text, context: Mapper[Text, Text, Text, IntWritable]#Context): Unit = {
-    val fields = value.toString.split(",")
-    //Missing value
-    if (fields.length == 9) {
-      //Outliers
-      if (fields(1).toInt >= 1 && fields(1).toInt <= 4 && fields(2).toInt >= 0 && fields(2).toInt <= 1 && fields(3).toInt >= 0 && fields(3).toInt <= 1 && fields(4).toInt >= 1 && fields(4).toInt <= 4) {
-        if (fields(5).toInt > -1 && fields(6).toInt > -1 && fields(7).toInt > -1 && fields(8).toInt > -1) {
-          context.write(new Text(fields(0)), one)
-        }
-      }
-    }
-  }
-}
-```
-
-
-
-
 ###### 3.2.2.1 Missing Value Analysis
 
 **Techniques:** in this part, we checked the field length of each data record to validate whether there are missed fields of the data record. If the field length of data is equal to 9, then the data record is intact. Otherwise, there are some missed values in the data record. 
@@ -283,38 +219,12 @@ In this part, we performed some data processing using Spark. Here is a summary o
 
 we defined the schema for the bike sharing data using the StructType class from the Spark SQL library, which specifies the data types and structure of each field in the data: 
 
-```scala
-val schema = StructType(Array(
-      StructField("datetime", StringType, nullable = true),
-      StructField("season", IntegerType, nullable = true),
-      StructField("holiday", IntegerType, nullable = true),
-      StructField("workingday", IntegerType, nullable = true),
-      StructField("weather", IntegerType, nullable = true),
-      StructField("temp", DoubleType, nullable = true),
-      StructField("atemp", DoubleType, nullable = true),
-      StructField("humidity", IntegerType, nullable = true),
-      StructField("windspeed", StringType, nullable = true),
-      StructField("casual", IntegerType, nullable = true),
-      StructField("registered", IntegerType, nullable = true),
-      StructField("count", StringType, nullable = true)
-    ))
-```
+
  
 
 #### 3.4.2 Reading data from HDFS
 
 We read the bike-sharing data from HDFS and performed preprocessing tasks. Firstly, we loaded the training and test data in CSV format from HDFS using the specified schema. 
-
-
-```scala
-val train = spark.read.format("csv")
-      .schema(schema)
-      .load("hdfs://master:9000/output/train/part-r-00000")
-
-    val test = spark.read.format("csv")
-      .schema(schema)
-      .load("hdfs://master:9000/output/test/part-r-00000")
-```
 
 #### 3.4.3 Data preprocessing
 
@@ -554,86 +464,7 @@ Besides, our project provided valuable insights and learnings in several areas. 
 
  
 
-# 6. Reference
-
-1. Fan, Rong-En, et al. "LIBLINEAR: A library for large linear classification." *Journal of Machine Learning Research* 9. Aug (2008): 1871-1874.
-2. Eren, Ezgi, and Volkan Emre Uz. "A review on bike-sharing: The factors affecting bike-sharing demand." *Sustainable cities and society* 54 (2020): 101882.
-3. Thusoo, Ashish, Joydeep Sen Sarma, Namit Jain, Zheng Shao, Prasad Chakka, Ning Zhang, Suresh Antony, Hao Liu, and Raghotham Murthy. "Hive-a petabyte scale data warehouse using hadoop." In *2010 IEEE 26th international conference on data engineering (ICDE 2010)*, pp. 996-1005. IEEE, 2010.
-4. Ruck, Dennis W., Steven K. Rogers, and Matthew Kabrisky. "Feature selection using a multilayer perceptron." *Journal of neural network computing* 2, no. 2 (1990): 40-48. **Data Source**
+ **Data Source**
 
 http://capitalbikeshare.com/system-data http://www.freemeteo.com 
-
- 
-
- 
-
-# 7. Individual Contribution
-
-## 7. 1 Individual Contribution Table
-
- 
-
-
-
-|             |  |
-|-------------| --- |
-| Team Member | Contribution Rate  |
-| LUO Peiyuan | 100%  |
-| LI Yiheng   | 100%  |
-| ZHOU Xin    | 100%  |
-
-In the project, our contribution was holistic and evenly distributed. We collectively brainstormed to define the research question, meticulously crafted the proposal, and engaged in comprehensive data collection and anal 
-
- 
-
- 
-
-### 7.2 Individual Contribution Statement
-
-STUDENT ID: 56642728 
-
-STUDENT NAME: LUO Peiyuan 
-
- 
-
-During the project, I made contributions to the implementation of the data processing pipeline. This opportunity allowed me to gain valuable hands-on experience by applying the concepts and techniques I learned in CS4480 to the project. Through the whole process, I witnessed how we can implement parallel computing, MapReduce, Hadoop, and Spark into real projects. Besides, collaborating with my teammates was a memorable experience, and together we achieved the project's goals. 
-
- 
-
-Specifically, I was responsible for utilizing the MapReduce framework to perform data preprocessing tasks including missing value analysis and outlier removal. In addition, I am also responsible for storing the preprocessed data in the Hadoop Distributed File System (HDFS). Moreover, I actively contributed to utilizing the capabilities of Spark for advanced data processing operations, taking advantage of its distributed computing capabilities to handle large-scale datasets efficiently. Lastly, I wrote the processed data into a Hive Database to provide a structured and efficient storage system for seamless data analysis and querying. 
-
-### 8. Presentation 
-<div align="center">
-  <img src="./ReadMEImg/image10.jpeg">
-</div>
-<div align="center">
-  <img src="./ReadMEImg/image11.jpeg">
-</div>
-<div align="center">
-  <img src="./ReadMEImg/image12.jpeg">
-</div>
-<div align="center">
-  <img src="./ReadMEImg/image13.jpeg">
-</div>
-<div align="center">
-  <img src="./ReadMEImg/image14.jpeg">
-</div>
-<div align="center">
-  <img src="./ReadMEImg/image15.jpeg">
-</div>
-<div align="center">
-  <img src="./ReadMEImg/image16.jpeg">
-</div>
-<div align="center">
-  <img src="./ReadMEImg/image17.jpeg">
-</div>
-<div align="center">
-  <img src="./ReadMEImg/image18.jpeg">
-</div>
-<div align="center">
-  <img src="./ReadMEImg/image19.jpeg">
-</div>
-
-
---- END --- 
 
