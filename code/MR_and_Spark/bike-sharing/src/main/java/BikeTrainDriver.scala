@@ -5,10 +5,6 @@ import org.apache.hadoop.mapreduce.Job
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat
 
-/**
- * @author Harry
- * @since 2023/11/17 22:33
- */
 object BikeTrainDriver {
 
   def main(args: Array[String]): Unit = {
