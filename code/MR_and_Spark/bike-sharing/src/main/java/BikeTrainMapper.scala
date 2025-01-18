@@ -1,10 +1,7 @@
 import org.apache.hadoop.io.{IntWritable, Text}
 import org.apache.hadoop.mapreduce.Mapper
 
-/**
- * @author Alfred
- * @since 2023/11/17 22:33
- */
+
 class BikeTrainMapper extends Mapper[Text, Text, Text, IntWritable] {
   private val one = new IntWritable(1)
 
